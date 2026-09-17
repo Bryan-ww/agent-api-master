@@ -4,6 +4,24 @@
 
 ---
 
+## 本课与 02A~02D 的关系（先读这段）
+
+本课是**"查表课"**：用最短时间把 Python 语法和你的 JS 知识对上，让你能开始读真代码。
+
+但"能读"不等于"能写对"。下面四课是配套的**"补基础课"**，专治第 02 课没展开、但写代码时一定会撞上的东西：
+
+| 课 | 主题 | 什么时候读 |
+|---|---|---|
+| [02A](02a-python-types-and-structures.md) | **类型与数据结构** | 遇到"改了一个变量另一个也变了"、`KeyError`、中文乱码时 |
+| [02B](02b-python-logic-and-io.md) | **运算、逻辑与 IO** | 要读写文件/JSON、配环境变量、调 HTTP 接口时 |
+| [02C](02c-python-advanced-functions.md) | **进阶函数** | 看不懂 `@dataclass`、`*args`、`yield`、`Annotated` 时 |
+| [02D](02d-python-debugging.md) | **调试** | 报错看不懂、想打断点、日志不会看时 |
+
+> 建议节奏：**按 02 → 02A → 02B → 02C → 02D 顺序读**，每课都不长，加起来约 2 小时，之后再去第 03 课。地基打牢，后面读 LangGraph 代码会轻松很多。
+> 如果实在着急想先看到 Agent 跑起来：**至少别跳过 02A 和 02D**——一个教你避开"改了 A 结果 B 也变了"这类诡异 bug，一个教你读懂报错。这两样是第一天就会用到的。
+
+---
+
 ## 2.1 心智模型：Python 和 JS 最大的三个不同
 
 1. **没有 `{}` 块，用缩进表达层级**。`if`/`for`/`def` 后面是冒号，下一行必须缩进（统一 4 空格）。缩进错了 = 语法错误。
@@ -82,6 +100,8 @@ value = maybe_get() or "fallback"   # ⚠️ 若 maybe_get() 返回 "" 或 0 也
 value = maybe_get() if maybe_get() is not None else "fallback"  # 安全
 ```
 
+> 📖 本课只讲了"认识这些类型"。**"改了一个变量另一个也变了""`KeyError` 怎么防""中文乱码"这些真正的坑 → 见 [02A 类型与数据结构](02a-python-types-and-structures.md)**。
+
 ## 2.4 类与 Pydantic（本项目大量使用）
 
 仓库里到处是 `class Xxx(BaseModel)` / `class Yyy(BaseSettings)` —— 这是 **Pydantic**（数据校验库，FastAPI 的根基）。前端类比：**它同时干了 TypeScript interface 的活 + zod 的活 + 序列化的活**。
@@ -133,6 +153,8 @@ finally:
 ```
 
 > 项目里常见模式是"把可能失败的 IO（数据库/外部 API）包进 try，日志用 `logger.exception` 打出完整堆栈"。前端 `throw` 的对象可以是任何值，Python 里 **raise 后面必须是异常实例**（`raise ValueError("...")`）。
+>
+> 📖 **怎么看懂报错、怎么打日志、怎么打断点 → 见 [02D 调试](02d-python-debugging.md)**（第一天就会用到）。
 
 ## 2.6 看懂本仓库代码的最小阅读集
 
@@ -167,4 +189,5 @@ finally:
 3. f-string 里怎么把 dict 的一个键拼进去？写一行示例。
 4. 打开 `pyproject.toml`，找到 `requires-python`（Python 版本要求）和测试相关配置（pytest / ruff），说说出 `uv run pytest` 大概会做什么。
 
-**下一课**：[03-async-coroutines.md](03-async-coroutines.md) —— 异步协程：从你熟悉的 JS 事件循环迁移过来。
+**下一课**：[02a-python-types-and-structures.md](02a-python-types-and-structures.md) —— 类型与数据结构：Python 的"内存模型"和前端不一样（本课最重要的补充）。
+（02A → 02B → 02C → 02D 读完后，接 [03-async-coroutines.md](03-async-coroutines.md)。）

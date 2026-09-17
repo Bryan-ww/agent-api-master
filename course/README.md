@@ -2,7 +2,7 @@
 
 > **你是谁**：前端开发者，会 JS/TS、会用 npm/pnpm、懂浏览器，但没写过后端，没写过 Python。
 > **你想干什么**：通过读懂并改造当前这个真实项目（Aegra-Api），学会 AI Agent 后端开发。
-> **这套课是什么**：17 节课 + 配套示例文件，从「搭环境」一路到「自己造一个 Agent」，每节课都对着**本仓库的真实代码**讲。
+> **这套课是什么**：**21 节课**（17 节主线 + 4 节 Python 基础补充 02A~02D）+ 配套示例文件，从「搭环境」一路到「自己造一个 Agent」，每节课都对着**本仓库的真实代码**讲。
 
 ---
 
@@ -29,9 +29,13 @@ Aegra-Api 是一个 **Agent 后端服务**，你可以把它理解为 **「Agent
 阶段 0 认知准备
   ├─ README.md（本文件）       课程地图与学习方法
   │
-阶段 1 地基：环境 + 语言 + 异步 + Web 框架（第 01~04 课）
+阶段 1 地基：环境 + 语言 + 异步 + Web 框架（第 01~04 课，含 Python 基础补充 02A~02D）
   ├─ 01-environment-setup      Windows 环境搭建：Python/uv/Docker/VSCode，把项目跑起来
   ├─ 02-python-essentials      Python 速成：给会 JS 的你一份对照语法表
+  ├─ 02a-python-types-and-structures   【补充】类型与数据结构：内存模型、可变性、list/dict/set、深浅拷贝
+  ├─ 02b-python-logic-and-io           【补充】运算与 IO：运算符、真假值、文件/JSON/环境变量/网络/正则
+  ├─ 02c-python-advanced-functions     【补充】进阶函数：*args、推导式、yield、装饰器、with、类型标注
+  ├─ 02d-python-debugging              【补充】调试：读 Traceback、结构化日志、VSCode 断点、pdb
   ├─ 03-async-coroutines       异步协程：从 JS 事件循环到 Python asyncio
   └─ 04-fastapi-first-api      用 FastAPI 写第一个 API（对照 Express）
   │
@@ -62,6 +66,7 @@ Aegra-Api 是一个 **Agent 后端服务**，你可以把它理解为 **「Agent
 ## 三、学习建议（写给前端背景的你）
 
 1. **不要试图背语法**。看到不会的 Python 语法去第 02 课查对照表，其余时间一直在"读真代码 + 改真代码"。
+   第 02 课只保证你**"看得懂"**；[02A](02a-python-types-and-structures.md)~[02D](02d-python-debugging.md) 才让你**"写得对、查得快"**（类型与数据结构 / 运算与 IO / 进阶函数 / 调试），建议按顺序读完再进第 03 课。
 2. **每课动手 > 每课阅读**。每课都有【动手实验】，做不出来就读报错、查本课【常见坑】。报错是你最好的老师。
 3. **只求"能改"，不求"能默写"**。你的目标是能在这个仓库里**加一个工具、换一个模型、写一个新 Agent 图、调通一次流式输出**。理解主线即可，旁支（如 cron、租约）能说出大概就行。
 4. **主线自检**（学完第 17 课你应该能回答）：
